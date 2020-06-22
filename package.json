@@ -6,9 +6,11 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --mode development --env.development --open --hot --progress",
-    "build": "webpack --mode production --env.production --progress",
+    "dist": "webpack --mode production --env.production --progress",
     "lint": "eslint './src/**/*.{ts,tsx,js}'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist",
+    "build": "npm run clean && npm run dist"
   },
   "dependencies": {
     "react": "^16.13.1",
@@ -37,6 +39,7 @@
     "fork-ts-checker-webpack-plugin": "^5.0.4",
     "html-webpack-plugin": "^4.3.0",
     "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
     "ts-loader": "^7.0.5",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5",
