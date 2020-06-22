@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 
 export interface HelloWorldProps {
   productction: string
@@ -8,9 +9,7 @@ export interface HelloWorldProps {
 
 const HelloWorld: React.FC<HelloWorldProps> = ({ productction, name, version }) => (
   <>
-    <h1>Hello World</h1>
-
-    <hr />
+    <Title>Hello World</Title>
 
     <h3>Environmental variables:</h3>
     <p>
@@ -26,3 +25,9 @@ const HelloWorld: React.FC<HelloWorldProps> = ({ productction, name, version }) 
 )
 
 export default HelloWorld
+
+const Title = styled.h1`
+  padding: 1em 0;
+  color: #000;
+  background-color: #f6f6f6;
+`

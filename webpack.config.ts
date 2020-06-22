@@ -2,6 +2,9 @@ import path from 'path'
 import webpack, { Configuration } from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+import createStyledComponentsTransformer from 'typescript-plugin-styled-components'
+
+const styledComponentsTransformer = createStyledComponentsTransformer()
 
 const webpackConfig = (env): Configuration => ({
   entry: './src/index.tsx',
@@ -18,11 +21,21 @@ const webpackConfig = (env): Configuration => ({
   module: {
     rules: [
       {
+        test: /\.js$/,
+        use: [{ loader: 'babel-loader' }],
+      },
+      {
         test: /\.tsx?$/,
-        loader: 'ts-loader',
-        options: {
-          transpileOnly: true,
-        },
+        use: [
+          'babel-loader',
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+              getCustomTransformers: () => ({ before: [styledComponentsTransformer] }),
+            }
+          }
+        ],
         exclude: /dist/,
       },
     ],
