@@ -1,2 +1,4 @@
 webpack.config.ts
 paths.config.js
+jest.setup.js
+jest.config.js
