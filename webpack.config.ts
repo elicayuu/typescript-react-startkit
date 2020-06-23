@@ -3,6 +3,7 @@ import webpack, { Configuration } from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import createStyledComponentsTransformer from 'typescript-plugin-styled-components'
+import { getWebpackAliasPaths } from './paths.config'
 
 const styledComponentsTransformer = createStyledComponentsTransformer()
 
@@ -11,7 +12,7 @@ const webpackConfig = (env): Configuration => ({
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
     alias: {
-      components: path.resolve(__dirname, './src/components/'),
+      ...getWebpackAliasPaths(),
     },
   },
   output: {
