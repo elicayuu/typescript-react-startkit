@@ -21,7 +21,7 @@ export default Button
 const ghostCss = css<ButtonProps>`
   border: 1px solid currentColor;
   background-color: transparent;
-  color: var(--${(props) => props.color});
+  color: var(--${props => props.color});
 `
 
 const Root = styled.button<ButtonProps>`
@@ -30,7 +30,7 @@ const Root = styled.button<ButtonProps>`
   padding: 0 0.8em;
   border: 0;
   border-radius: 4px;
-  background-color: var(--${(props) => props.color});
+  background-color: var(--${props => props.color});
   color: #fff;
   font-family: sans-serif;
   font-size: 0.93em;
@@ -38,7 +38,7 @@ const Root = styled.button<ButtonProps>`
   transition: box-shadow 0.3s ease-out;
 
   &:hover {
-    box-shadow: 0 0 6px var(--${(props) => props.color});
+    box-shadow: 0 0 6px var(--${props => props.color});
   }
 
   &:focus {
@@ -49,5 +49,5 @@ const Root = styled.button<ButtonProps>`
     box-shadow: none;
   }
 
-  ${(props) => props.ghost && ghostCss}
+  ${props => props.ghost && ghostCss}
 `
