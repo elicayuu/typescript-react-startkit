@@ -4,9 +4,18 @@ import { normalize } from 'polished'
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize()}
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
   
   body {
     font-family: sans-serif;
+  }
+
+  a:link {
+    text-decoration: none;
   }
   
   :root {
