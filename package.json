@@ -15,6 +15,8 @@
     "build": "npm run clean && npm run dist"
   },
   "dependencies": {
+    "@svgr/webpack": "^5.5.0",
+    "file-loader": "^6.2.0",
     "polished": "^3.6.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

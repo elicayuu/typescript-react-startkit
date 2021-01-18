@@ -1,5 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import Button from '@components/Button'
+
+import { GlobalStyle } from '../styles'
 
 export interface HelloWorldProps {
   productction: string
@@ -9,6 +12,7 @@ export interface HelloWorldProps {
 
 const HelloWorld: React.FC<HelloWorldProps> = ({ productction, name, version }) => (
   <>
+    <GlobalStyle />
     <Title>Hello World</Title>
 
     <h3>Environmental variables:</h3>
@@ -20,6 +24,12 @@ const HelloWorld: React.FC<HelloWorldProps> = ({ productction, name, version }) 
     </p>
     <p>
       process.env.VERSION: <b>{version}</b>
+    </p>
+    <p>
+      <Button>Normal Button</Button>
+    </p>
+    <p>
+      <Button isLoading={true}>Loading</Button>
     </p>
   </>
 )

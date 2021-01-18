@@ -38,6 +38,18 @@ const webpackConfig = (env): Configuration => ({
         ],
         exclude: /dist/,
       },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack', 'file-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[name]_[hash:base64:5].[ext]',
+          outputPath: 'images',
+        },
+      },
     ],
   },
   plugins: [
