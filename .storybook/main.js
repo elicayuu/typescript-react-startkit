@@ -19,23 +19,6 @@ module.exports = {
       ...getWebpackAliasPaths(),
     }
 
-    config.module.rules.push({
-      test: /\.tsx?$/,
-      include: path.resolve(__dirname, "../src"),
-      use: [
-        "babel-loader",
-        {
-          loader: "ts-loader",
-          options: {
-            compilerOptions: {
-              noEmit: false,
-            },
-          },
-        },
-        "react-docgen-typescript-loader"
-      ],
-    });
-
     // modify storybook's file-loader rule to avoid conflicts with svgr
     const fileLoaderRule = config.module.rules.find(rule => rule.test.test('.svg'));
     fileLoaderRule.exclude = pathToInlineSvg;
@@ -45,8 +28,6 @@ module.exports = {
       test: /\.svg$/,
       use: ['@svgr/webpack', 'file-loader'],
     });
-  
-    config.resolve.extensions.push(".ts", ".tsx");
 
     return config;
   },
